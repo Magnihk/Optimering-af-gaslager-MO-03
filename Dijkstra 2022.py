@@ -32,9 +32,7 @@ def optimized_dijkstra():
     heapq.heappush(pq, (0, q0, 0, [q0]))  # Starttilstand
     best_profit = float('-inf')  
     best_path = []  
-    kombinationer = 0  
     while pq:  
-        kombinationer += 1  
         neg_profit, inventory, time_step, path = heapq.heappop(pq)  
         profit = -neg_profit  
 
@@ -65,7 +63,7 @@ def optimized_dijkstra():
 start_time = time.time()
 
 # Kør Dijkstras algoritme
-max_profit, optimal_path, kombinationer = optimized_dijkstra()
+max_profit, optimal_path = optimized_dijkstra()
 
 # Slut timer
 end_time = time.time()
