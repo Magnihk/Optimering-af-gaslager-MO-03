@@ -59,7 +59,7 @@ def optimized_dijkstra():
             if new_inventory is not None:
                 heapq.heappush(pq, (-(profit + next_profit), new_inventory, time_step + 1, path + [new_inventory]))
 
-    return best_profit, best_path, kombinationer
+    return best_profit, best_path
 
 # Start timer
 start_time = time.time()
@@ -71,23 +71,20 @@ max_profit, optimal_path, kombinationer = optimized_dijkstra()
 end_time = time.time()
 time_used = end_time - start_time
 
-# Udregn ændringer i lager
+# Udregner ændringer i lager
 changes = [optimal_path[i + 1] - optimal_path[i] for i in range(len(optimal_path) - 1)]
 
-# Beregn transaktioner for den optimale sti
-
-# Udskriv resultater
+# Udskriver resultater
 print("\n=== Resultat ===")
 print("Bedste Δq_t sekvens:", changes)
 print(f'Den optimale sti er: {optimal_path}')
 print("Maksimal diskonteret profit:", max_profit)
 print(f"Tid brugt på kørsel: {time_used:.2f} sekunder")
-print(kombinationer)
 
-# Plot resultater
+# Plotter resultater
 plt.scatter(0, q0, c="black", label="Start Mål")
 
-# Plot tilladelige områder
+# Plotter områderne
 for t in range(1, T + 1):
     for q in range(q_min, q_max + 1):
         plt.scatter(t, q, c="grey", alpha=0.5)
