@@ -75,7 +75,6 @@ time_used = end_time - start_time
 changes = [optimal_path[i + 1] - optimal_path[i] for i in range(len(optimal_path) - 1)]
 
 # Beregn transaktioner for den optimale sti
-transactions = calculate_optimal_path_transactions(optimal_path, prices, r, T)
 
 # Udskriv resultater
 print("\n=== Resultat ===")
